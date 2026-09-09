@@ -1,4 +1,4 @@
-/* Reset básico para remover margens padrão */
+/* Reset básico e Fonte */
 * {
     margin: 0;
     padding: 0;
@@ -6,35 +6,122 @@
 }
 
 body {
-    background-color: #ffffff; /* Fundo branco */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #333333; /* Texto cinza escuro para melhor leitura */
-    
-    /* Centrar o conteúdo no ecrã */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Ocupa 100% da altura do ecrã */
-    text-align: center;
+    /*background-color: #e6e2dd;*/
+    /* Substitui a cor aqui */
+    background-color: #e8e8e8; /* Um cinza claro e muito elegante */
+    font-family: 'Montserrat', sans-serif;
+    color: #1a1a1a; /* Voltamos ao texto escuro */
+    height: 100vh;
 }
 
+/* Estrutura Editorial: espalhar pelo ecrã todo */
 .container {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Empurra header para cima e footer para baixo */
+    height: 100%;
+    padding: 6vh 6vw;
+    /* Margens generosas à volta de tudo */
 }
 
+/* O Logótipo fica mais discreto */
 .logo {
-    max-width: 250px; /* Ajusta este valor dependendo do tamanho do teu logo */
-    height: auto;
-    margin-bottom: 40px; /* Espaço entre o logo e o texto */
+    max-width: 160px; /* Mantém o tamanho que preferires */
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.3s;
+}
+
+/* O Texto do Meio */
+.content {
+    max-width: 600px;
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-size: 3.5rem;
+    font-weight: 200; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: #1a1a1a; /* Título volta a escuro */
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.8s;
+}
+
+.line {
+    width: 60px;
+    height: 1px;
+    background-color: #1a1a1a; /* Linha escura */
+    margin-bottom: 25px;
+    opacity: 0;
+    animation: expandLine 1s ease forwards 1.3s;
 }
 
 p {
-    font-size: 1.1rem;
-    color: #666666;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #555555; /* Um cinza médio, para contrastar suavemente com o título */
+    letter-spacing: 1px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 1.8s;
+}
+
+/* O Rodapé */
+.footer {
+    display: flex;
+    gap: 40px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 2.3s;
+}
+
+.footer a {
+    color: #1a1a1a; /* Links escuros */
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.footer a:hover {
+    opacity: 0.4;
+}
+
+/* Animações Premium */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandLine {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 60px;
+        opacity: 1;
+    }
+}
+
+/* Adaptar para telemóvel */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
