@@ -21,20 +21,36 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empurra topo para cima, fundo para baixo e texto para o meio */
-    height: 100vh; /* Ocupa exatamente a altura do ecrã */
-    padding: 6vh 6vw; /* Margens globais à volta de tudo */
+    justify-content: space-between; 
+    height: 100vh; 
+    padding: 6vh 6vw; 
 }
 
 /* =========================================
    3. ELEMENTOS VISUAIS E ANIMAÇÕES (TIMELINE)
    ========================================= */
 
-/* PASSO 1: O Logótipo (Aparece aos 0.3s) */
-.logo {
-    max-width: 350px;
+/* PASSO 1: O Contacto no Topo (Aparece aos 3.5s) */
+.top-contact {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.2rem; /* O TEU TAMANHO */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
     opacity: 0;
-    animation: fadeUp 1s ease forwards 0.3s;
+    animation: fadeUp 1s ease forwards 3.5s;
+}
+
+.top-contact a {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.top-contact a:hover {
+    opacity: 0.4;
 }
 
 /* Bloco Central que contém a linha e os textos */
@@ -44,67 +60,58 @@ body {
 
 /* PASSO 2: Título "BREVEMENTE" (Aparece aos 0.5s) */
 h1 {
-    font-size: 3.5rem;
-    font-weight: 200; /* Letra muito fina e elegante */
+    font-size: 3rem; /* O TEU TAMANHO */
+    font-weight: 200; 
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 15px; /* Distância para a linha */
+    margin-bottom: 15px; 
     opacity: 0;
     animation: fadeUp 1s ease forwards 0.5s;
 }
 
 /* PASSO 3: A Linha (Avança para a direita a partir dos 1.2s) */
 .line {
-    width: 100%; /* Vai até à margem direita */
-    height: 1px;
+    width: 100%; 
+    height: 2px;
     background-color: #1a1a1a;
     margin-bottom: 15px;
     
-    /* Configuração para crescer da esquerda para a direita */
     transform-origin: left center;
-    transform: scaleX(0); /* Começa invisível */
+    transform: scaleX(0); 
     animation: growRight 1.5s cubic-bezier(0.8, 0, 0.2, 1) forwards 1.2s;
 }
 
 /* PASSO 4: Subtítulo "COMING SOON" (Aparece aos 2.7s) */
 .subtitle {
-    font-size: 1.2rem;
-    font-weight: 200; /* Mesma espessura do h1 para consistência */
+    font-size: 1.9rem; /* O TEU TAMANHO */
+    font-weight: 200; 
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-align: right; /* Alinhado à direita */
+    text-align: right; 
     opacity: 0;
-    animation: fadeUp 1s ease forwards 2.7s; /* Aparece exatamente quando a linha acaba de crescer */
+    animation: fadeUp 1s ease forwards 2.7s; 
 }
 
-/* PASSO 5: O Rodapé / Email (Aparece aos 3.5s) */
-.footer {
+/* PASSO 5: O Logótipo no Fundo (Aparece por último, aos 4.5s) */
+.bottom-logo {
     display: flex;
-    justify-content: center; /* Centra o email perfeitamente no fundo */
+    justify-content: center;
     width: 100%;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
+}
+
+.logo {
+    max-width: 350px; /* O TEU TAMANHO */
     opacity: 0;
-    animation: fadeUp 1s ease forwards 3.5s;
-}
-
-.footer a {
-    color: #1a1a1a;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-}
-
-.footer a:hover {
-    opacity: 0.4;
+    animation: fadeUp 1s ease forwards 4.5s; 
+    
+    display: block;
+    margin: 0 auto 5vh auto; /* Centraliza horizontalmente e adiciona margem inferior */
 }
 
 /* =========================================
    4. DEFINIÇÃO DOS MOVIMENTOS (KEYFRAMES)
    ========================================= */
 
-/* Movimento suave de baixo para cima */
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -116,7 +123,6 @@ h1 {
     }
 }
 
-/* Efeito da linha a esticar até ao fim */
 @keyframes growRight {
     from {
         transform: scaleX(0);
@@ -139,7 +145,7 @@ h1 {
     .subtitle {
         font-size: 0.9rem;
     }
-    .footer {
-        font-size: 0.7rem;
+    .top-contact {
+        font-size: 0.7rem; /* O TEU TAMANHO DE MOBILE */
     }
 }
