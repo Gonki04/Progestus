@@ -30,7 +30,7 @@ body {
    3. ELEMENTOS VISUAIS E ANIMAÇÕES (TIMELINE)
    ========================================= */
 
-/* PASSO 1: O Contacto no Topo (Aparece aos 3.5s) */
+/* O Contacto no Topo (AGORA É O ÚLTIMO A APARECER: 4.5s) */
 .top-contact {
     display: flex;
     justify-content: center;
@@ -40,7 +40,7 @@ body {
     letter-spacing: 1.5px;
     font-weight: 600;
     opacity: 0;
-    animation: fadeUp 1s ease forwards 3.5s;
+    animation: fadeUp 1s ease forwards 4.5s; /* Aparece no fim de tudo */
 }
 
 .top-contact a {
@@ -58,7 +58,7 @@ body {
     width: 100%; 
 }
 
-/* PASSO 2: Título "BREVEMENTE" (Aparece aos 0.5s) */
+/* Título "BREVEMENTE" (Aparece aos 0.5s) */
 h1 {
     font-size: 3rem; /* O TEU TAMANHO */
     font-weight: 200; 
@@ -69,7 +69,7 @@ h1 {
     animation: fadeUp 1s ease forwards 0.5s;
 }
 
-/* PASSO 3: A Linha (Avança para a direita a partir dos 1.2s) */
+/* A Linha (Avança para a direita a partir dos 1.2s) */
 .line {
     width: 100%; 
     height: 2px;
@@ -81,7 +81,7 @@ h1 {
     animation: growRight 1.5s cubic-bezier(0.8, 0, 0.2, 1) forwards 1.2s;
 }
 
-/* PASSO 4: Subtítulo "COMING SOON" (Aparece aos 2.7s) */
+/* Subtítulo "COMING SOON" (Aparece aos 2.7s) */
 .subtitle {
     font-size: 1.9rem; /* O TEU TAMANHO */
     font-weight: 200; 
@@ -92,7 +92,7 @@ h1 {
     animation: fadeUp 1s ease forwards 2.7s; 
 }
 
-/* PASSO 5: O Logótipo no Fundo (Aparece por último, aos 4.5s) */
+/* O Logótipo no Fundo (AGORA É O PRIMEIRO A APARECER: 0.3s) */
 .bottom-logo {
     display: flex;
     justify-content: center;
@@ -102,10 +102,10 @@ h1 {
 .logo {
     max-width: 350px; /* O TEU TAMANHO */
     opacity: 0;
-    animation: fadeUp 1s ease forwards 4.5s; 
+    animation: fadeUp 1s ease forwards 0.3s; /* Aparece logo de início */
     
     display: block;
-    margin: 0 auto 5vh auto; /* Centraliza horizontalmente e adiciona margem inferior */
+    margin: 0 auto 5vh auto; /* Centraliza e dá margem inferior */
 }
 
 /* =========================================
@@ -146,6 +146,6 @@ h1 {
         font-size: 0.9rem;
     }
     .top-contact {
-        font-size: 0.7rem; /* O TEU TAMANHO DE MOBILE */
+        font-size: 0.7rem; 
     }
 }
