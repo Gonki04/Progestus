@@ -1,4 +1,6 @@
-/* Reset básico e Fonte */
+/* =========================================
+   1. RESET BÁSICO E CONFIGURAÇÃO GLOBAL
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -6,81 +8,90 @@
 }
 
 body {
-    /*background-color: #e6e2dd;*/
-    /* Substitui a cor aqui */
-    background-color: #e8e8e8; /* Um cinza claro e muito elegante */
+    background-color: #e8e8e8; /* Fundo cinza claro premium */
     font-family: 'Montserrat', sans-serif;
-    color: #1a1a1a; /* Voltamos ao texto escuro */
-    height: 100vh;
+    color: #1a1a1a; /* Texto escuro */
+    min-height: 100vh;
+    overflow-x: hidden; /* Previne barras de scroll horizontais */
 }
 
-/* Estrutura Editorial: espalhar pelo ecrã todo */
+/* =========================================
+   2. ESTRUTURA (LAYOUT)
+   ========================================= */
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    /* Empurra header para cima e footer para baixo */
-    height: 100%;
-    padding: 6vh 6vw;
-    /* Margens generosas à volta de tudo */
+    justify-content: space-between; /* Empurra topo para cima, fundo para baixo e texto para o meio */
+    height: 100vh; /* Ocupa exatamente a altura do ecrã */
+    padding: 6vh 6vw; /* Margens globais à volta de tudo */
 }
 
-/* O Logótipo fica mais discreto */
+/* =========================================
+   3. ELEMENTOS VISUAIS E ANIMAÇÕES (TIMELINE)
+   ========================================= */
+
+/* PASSO 1: O Logótipo (Aparece aos 0.3s) */
 .logo {
-    max-width: 160px; /* Mantém o tamanho que preferires */
+    max-width: 350px;
     opacity: 0;
     animation: fadeUp 1s ease forwards 0.3s;
 }
 
-/* O Texto do Meio */
+/* Bloco Central que contém a linha e os textos */
 .content {
-    max-width: 600px;
+    width: 100%; 
 }
 
+/* PASSO 2: Título "BREVEMENTE" (Aparece aos 0.5s) */
 h1 {
     font-size: 3.5rem;
-    font-weight: 200; 
+    font-weight: 200; /* Letra muito fina e elegante */
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 25px;
-    color: #1a1a1a; /* Título volta a escuro */
+    margin-bottom: 15px; /* Distância para a linha */
     opacity: 0;
-    animation: fadeUp 1s ease forwards 0.8s;
+    animation: fadeUp 1s ease forwards 0.5s;
 }
 
+/* PASSO 3: A Linha (Avança para a direita a partir dos 1.2s) */
 .line {
-    width: 60px;
+    width: 100%; /* Vai até à margem direita */
     height: 1px;
-    background-color: #1a1a1a; /* Linha escura */
-    margin-bottom: 25px;
-    opacity: 0;
-    animation: expandLine 1s ease forwards 1.3s;
+    background-color: #1a1a1a;
+    margin-bottom: 15px;
+    
+    /* Configuração para crescer da esquerda para a direita */
+    transform-origin: left center;
+    transform: scaleX(0); /* Começa invisível */
+    animation: growRight 1.5s cubic-bezier(0.8, 0, 0.2, 1) forwards 1.2s;
 }
 
-p {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #555555; /* Um cinza médio, para contrastar suavemente com o título */
-    letter-spacing: 1px;
-    line-height: 1.6;
+/* PASSO 4: Subtítulo "COMING SOON" (Aparece aos 2.7s) */
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 200; /* Mesma espessura do h1 para consistência */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: right; /* Alinhado à direita */
     opacity: 0;
-    animation: fadeUp 1s ease forwards 1.8s;
+    animation: fadeUp 1s ease forwards 2.7s; /* Aparece exatamente quando a linha acaba de crescer */
 }
 
-/* O Rodapé */
+/* PASSO 5: O Rodapé / Email (Aparece aos 3.5s) */
 .footer {
     display: flex;
-    gap: 40px;
+    justify-content: center; /* Centra o email perfeitamente no fundo */
+    width: 100%;
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-weight: 600;
     opacity: 0;
-    animation: fadeUp 1s ease forwards 2.3s;
+    animation: fadeUp 1s ease forwards 3.5s;
 }
 
 .footer a {
-    color: #1a1a1a; /* Links escuros */
+    color: #1a1a1a;
     text-decoration: none;
     transition: opacity 0.3s ease;
 }
@@ -89,39 +100,46 @@ p {
     opacity: 0.4;
 }
 
-/* Animações Premium */
+/* =========================================
+   4. DEFINIÇÃO DOS MOVIMENTOS (KEYFRAMES)
+   ========================================= */
+
+/* Movimento suave de baixo para cima */
 @keyframes fadeUp {
     from {
         opacity: 0;
         transform: translateY(15px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-@keyframes expandLine {
+/* Efeito da linha a esticar até ao fim */
+@keyframes growRight {
     from {
-        width: 0;
-        opacity: 0;
+        transform: scaleX(0);
     }
-
     to {
-        width: 60px;
-        opacity: 1;
+        transform: scaleX(1);
     }
 }
 
-/* Adaptar para telemóvel */
+/* =========================================
+   5. ADAPTAÇÃO PARA TELEMÓVEL
+   ========================================= */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
+    .logo {
+        max-width: 250px;
     }
-
+    h1 {
+        font-size: 2.2rem;
+    }
+    .subtitle {
+        font-size: 0.9rem;
+    }
     .footer {
-        flex-direction: column;
-        gap: 15px;
+        font-size: 0.7rem;
     }
 }
