@@ -61,7 +61,7 @@ body {
 /* Títulos PT e EN (aparecem juntos depois de a linha terminar) */
 h1,
 .subtitle {
-    font-size: 3rem; /* O TEU TAMANHO */
+    font-size: 2.7rem;
     font-weight: 200; 
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -135,7 +135,7 @@ h1 {
     }
     h1,
     .subtitle {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     .top-contact {
         font-size: 0.7rem; 
